@@ -1,7 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './login.css'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
 function Register() {
+  const [userEmail,setEmail]=useState();
+  const [userPassword,setPassword]=useState();
+  const handlerRegistration=async()=>{
+    if(userPassword.length<6) {
+      alert('Password must have atleast 6 characters')
+      return
+  }
+    await axios.post('http://localhost:4000/api/v1/register',{
+      "email":userEmail,
+      "password":userPassword
+    }).then(res=>{
+      alert('Registration successful !')
+    }).catch(err=>{
+      alert(err.response.data.message);
+    })
+
+  }
+
   return (
     <>
      <div className="container">
@@ -9,10 +28,9 @@ function Register() {
         <div className="registration form">
           <header>Signup</header>
           <form action="#">
-            <input type="text" placeholder="Enter your email" />
-            <input type="password" placeholder="Create a password" />
-            <input type="password" placeholder="Confirm your password" />
-            <input type="button" className="button" value="Signup" />
+            <input type="email" placeholder="Enter your email" onChange={(e)=>{setEmail(e.target.value)}}/>
+            <input type="password" placeholder="Create a password" onChange={(e)=>{setPassword(e.target.value)}}/>
+            <input type="button" className="button" value="Signup" onClick={handlerRegistration} />
           </form>
           <div className="signup">
             <span className="signup">
