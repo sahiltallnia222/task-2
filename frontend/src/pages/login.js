@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
-function Login() {
+function Login({user,authFunc}) {
   const [userEmail,setEmail]=useState();
   const [userPassword,setPassword]=useState();
-  
+  const navigation=useNavigate()
   const handleLogin=async()=>{
     await axios({
       url: 'http://localhost:4000/api/v1/login',
@@ -17,8 +17,11 @@ function Login() {
       withCredentials: true
   }).then(res=>{
       alert('Login successful !')
+      authFunc(true)
+      navigation('/')
     }).catch(err=>{
       alert(err.response.data.message);
+
     })
   }
 
@@ -48,7 +51,7 @@ function Login() {
           <form action="#">
           <input type="email" placeholder="Enter your email" onChange={(e)=>{setEmail(e.target.value)}}/>
             <input type="password" placeholder="Create a password" onChange={(e)=>{setPassword(e.target.value)}}/>
-            <a href="#">Forgot password?</a>
+            {/* <a href="#">Forgot password?</a> */}
             <input type="button" className="button" value="Login" onClick={handleLogin}/>
           </form>
           <div className="signup">

@@ -21,3 +21,14 @@
     display: flex;
     gap: 1.4rem;
 }
+
+.btn{
+    background-color: white;
+    color: #4070f4;
+    outline: none;
+    padding: 0.4rem 1rem;
+    border: none;
+    font-weight: 600;
+    border-radius: 1rem;
+    cursor: pointer;
+}

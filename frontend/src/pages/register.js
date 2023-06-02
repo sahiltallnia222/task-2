@@ -14,7 +14,7 @@ function Register() {
       "email":userEmail,
       "password":userPassword
     }).then(res=>{
-      alert('Registration successful !')
+      alert('Registration successful ! Please varify your identity by clicking on link sent on given email address.')
     }).catch(err=>{
       alert(err.response.data.message);
     })

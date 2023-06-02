@@ -1,16 +1,39 @@
 import React from 'react'
 import './home.css'
 import Navbar from '../components/Navbar'
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { useRef } from 'react';
 import { useEffect,useState } from 'react';
-import axios from 'axios';
+import axios, { Axios } from 'axios';
 import { Line } from 'react-chartjs-2'
 import { Chart, registerables } from 'chart.js'
 Chart.register(...registerables)
 
+function Home({user}) {
+  const navagation=useNavigate()
+  // const [is_auth,setAuth]=useState(false);
+  // const navigate=useNavigate();
+  // const checkAuth=async()=>{
+  //   await axios({
+  //     url: 'http://localhost:4000/api/v1/is_authenticated',
+  //     method: "get",
+  //     withCredentials: true
+  //   }).then(res=>{
+  //     // console.log(res.data.success)
+  //     // setAuth(res.data.success)
+  //     if(!res.data.success) navigate('/login')
+  //     else{
+  //       localStorage.setItem('auth',true)
+  //     }
+  //     }).catch(err=>{
+  //       console.log(err);
+  //     })
+  // }
+  // useEffect(()=>{
+  //   checkAuth();
+  // },[])
 
-function Home() {
   let ref=useRef()
   const [val,setVal]=useState('');
   const [searchData,setSearchData]=useState([]);
@@ -34,7 +57,9 @@ function Home() {
       setSearchData([]);
     }
   }
-
+useEffect(()=>{
+  fetchData()
+},[val])
 
   const plotChart=async(x,y)=>{
     setStockName(y)
@@ -145,10 +170,7 @@ function Home() {
   set_dividend_amount(chart_div_amount)
   setSearchData([])
 }
-
-  useEffect(()=>{
-    fetchData()
-  },[val])
+  if(!user) return navagation('/login')
   return (
     <>
     <div>
