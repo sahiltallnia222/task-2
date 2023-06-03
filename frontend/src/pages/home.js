@@ -207,8 +207,8 @@ useEffect(()=>{
         />
       }
       </div>
-      <div className='chart-box'>
       {Object.keys(datakeys).length>0 && 
+      <div className='chart-box'>
         <Line
           data={low_high}
           options={{
@@ -223,10 +223,10 @@ useEffect(()=>{
             },
           }}
         />
-      }
       </div>
-      <div className='chart-box'>
+      }
       {Object.keys(datakeys).length>0 && 
+      <div className='chart-box'>
         <Line
           data={volume}
           options={{
@@ -241,10 +241,10 @@ useEffect(()=>{
             },
           }}
         />
-      }
       </div>
-      <div className='chart-box'>
+      }
       {Object.keys(datakeys).length>0 && 
+      <div className='chart-box'>
         <Line
           data={dividend_amount}
           options={{
@@ -259,13 +259,21 @@ useEffect(()=>{
             },
           }}
         />
-      }
       </div>
+      }
     </div>}
     {
       ! isAvailable &&
       <div className='stock-name'>Thank you for using Alpha Vantage! Our standard API call frequency is 5 calls per minute and 500 calls per day. Please visit https://www.alphavantage.co/premium/ if you would like to target a higher API call frequency</div>
     }
+
+    <div className='footer-box'>
+      <h2>Search and find following details about stocks of any company.</h2>
+      <p>Opening and closing price</p>
+      <p>Lowest and highest price</p>
+      <p>Volume of stocks</p>
+      <p>Dividend amount</p>
+    </div>
     </div>
     </>
   )
