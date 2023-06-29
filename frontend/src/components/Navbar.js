@@ -39,11 +39,11 @@ function Navbar({user,authFunc}) {
       </div>
       <div className='links'>
         <div><Link to='/' className='link'>Home</Link></div>
-        <div className='account'>
+        {/* <div className='account'>
         {user && <button onClick={handleAuth} className='btn'>Log out</button>}
         {!user && <Link to='/register' className='link'>Sign up</Link>}
         {!user && <Link to='/login' className='link'>Login</Link>}
-        </div>
+        </div> */}
       </div>
     </div>
   )

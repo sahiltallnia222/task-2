@@ -170,7 +170,7 @@ useEffect(()=>{
   set_dividend_amount(chart_div_amount)
   setSearchData([])
 }
-  if(!user) return navagation('/login')
+  // if(!user) return navagation('/login')
   return (
     <>
     <div>
