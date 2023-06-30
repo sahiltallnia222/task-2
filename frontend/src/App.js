@@ -32,7 +32,7 @@ function App() {
   },[])
   return (
     <div className="App">
-      <Navbar user={isAuth} authFunc={setIsAuth}/>
+      {/* <Navbar user={isAuth} authFunc={setIsAuth}/> */}
       <Routes>
         <Route path="/" element={<Home user={isAuth}/>}/>
         <Route path="/register" element={<Register/>}/>
